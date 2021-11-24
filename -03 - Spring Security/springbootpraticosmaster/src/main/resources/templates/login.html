@@ -5,11 +5,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 
 <body>
-    <h1>Olá Mundo</h1>
+    <div th:if="${param.error}">
+        Senha ou username invalido!
+    </div>
+
+    <div th:if="${param.logout}">
+        Voce esta desconectado!
+    </div>
+    <form th:action="@{/login}" method="post">
+
+        <div>
+            <label>Usuário: <input type="text" name="username"/></label>
+        </div>
+
+        <div>
+            <label>Senha: <input type="password" name="password"/></label>
+        </div>
+
+        <div><input type="submit" value="Entrar"></div>
+
+    </form>
 </body>
 
 </html>
