@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="www.thymeleaf.org">
 
-<head>
+<head th:replace="base :: headCust">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,30 @@
 
 <body>
     <div th:replace="base :: navlinks"></div>
-    <h2>Entre em contato</h2>
+    <div class="container">
+        <div class="alert alert-primary" role="alert">
+            <h2>Entre em contato</h2>
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="diegotexierapereira@hotmail.com">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Serviços</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                <option>Sugestões</option>
+                <option>Dúvidas</option>
+                <option>Reclamacões</option>
+            </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Comentário</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
     <div th:replace="base :: footer"></div>
 </body>
 
