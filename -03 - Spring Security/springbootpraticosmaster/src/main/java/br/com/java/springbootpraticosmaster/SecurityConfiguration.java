@@ -21,23 +21,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-        .antMatchers("/").access("hasAnyAuthority('USERS', 'ADMIN')")
-        .antMatchers("/admin").access("hasAuthority('ADMIN')")
-        .anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll()
-        
-        .and()
-        .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-        .logoutSuccessUrl("/login").permitAll();
+            .antMatchers("/").access("hasAnyAuthority('USERS', 'ADMIN')")
+            .antMatchers("/admin").access("hasAuthority('ADMIN')")
+            .anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll()
+            .and()
+            .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+            .logoutSuccessUrl("/login").permitAll();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.inMemoryAuthentication()
-        .withUser("diego").password(passwordEncoder().encode("diego2021"))
-        .authorities("ADMIN")
-        .and()
-        .withUser("user")
-        .password(passwordEncoder().encode("password"))
-        .authorities("USER");
+            .withUser("diego").password(passwordEncoder().encode("diego2021"))
+            .authorities("ADMIN")
+            .and()
+            .withUser("user")
+            .password(passwordEncoder().encode("password"))
+            .authorities("USER");
     }
 }
